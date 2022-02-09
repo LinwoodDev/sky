@@ -1,45 +1,35 @@
-# Next.js with TypeScript example
+# Linwood Sky
 
-## How to use
+> Visualize your data like a pro.
 
-Download the example [or clone the repo](https://github.com/mui/material-ui):
+[![GitHub License badge](https://img.shields.io/github/license/LinwoodCloud/Sky?color=2D5DCD&style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiBmaWxsPSIjMmQ1ZGNkIiB2aWV3Qm94PSIwIDAgMjU2IDI1NiI%2BPHJlY3Qgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIGZpbGw9Im5vbmUiPjwvcmVjdD48cmVjdCB4PSIzMiIgeT0iNDgiIHdpZHRoPSIxOTIiIGhlaWdodD0iMTYwIiByeD0iOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMmQ1ZGNkIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMTYiPjwvcmVjdD48bGluZSB4MT0iNzYiIHkxPSI5NiIgeDI9IjE4MCIgeTI9Ijk2IiBmaWxsPSJub25lIiBzdHJva2U9IiMyZDVkY2QiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxNiI%2BPC9saW5lPjxsaW5lIHgxPSI3NiIgeTE9IjEyOCIgeDI9IjE4MCIgeTI9IjEyOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMmQ1ZGNkIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMTYiPjwvbGluZT48bGluZSB4MT0iNzYiIHkxPSIxNjAiIHgyPSIxODAiIHkyPSIxNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzJkNWRjZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjE2Ij48L2xpbmU%2BPC9zdmc%2B)](https://github.com/LinwoodCloud/butterfly/blob/main/LICENSE)
+[![GitHub Repo stars](https://img.shields.io/github/stars/LinwoodCloud/butterfly?color=2D5DCD&logo=github&logoColor=2D5DCD&style=for-the-badge)](https://github.com/LinwoodCloud/butterfly)
+[![Discord badge](https://img.shields.io/discord/735424757142519848?style=for-the-badge&color=2D5DCD&logo=discord&logoColor=2D5DCD)](https://discord.linwood.dev)
+</div>
 
-<!-- #default-branch-switch -->
+<p align="center">
+    <a href="http://sky.linwood.dev"><b>Website</b></a> •
+    <a href="https://go.linwood.dev/discord"><b>Discord</b></a> •
+    <a href="https://twitter.com/LinwoodCloud"><b>Twitter</b></a> •
+    <a href="CONTRIBUTING.md"><b>Contribute</b></a>
+</p>  
+
+---
+
+This project is a collection of tools for visualizing data.
+You can generate charts, tables, and graphs from your data and share them with others.
+
+**Please note that this is a work in progress and is not yet complete.**
+
+## Features
+
+* 📊 Create charts from your data. Import data from CSV, JSON, and more from a local file or from a URL. Compare multiple datasets with a variety of chart types.
+* ⏱️ Create timer, countdowns and more and customize these.
+* ➕ Share it using a URL, download them or embed it in your website.
+
+## Installation
 
 ```sh
-curl https://codeload.github.com/mui/material-ui/tar.gz/master | tar -xz --strip=2  material-ui-master/examples/nextjs-with-typescript
-cd nextjs-with-typescript
+yarn
+yarn dev
 ```
-
-Install it and run:
-
-```sh
-npm install
-npm run dev
-```
-
-or:
-
-<!-- #default-branch-switch -->
-
-[![Edit on StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/mui/material-ui/tree/master/examples/nextjs-with-typescript)
-
-[![Edit on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mui/material-ui/tree/master/examples/nextjs-with-typescript)
-
-## The idea behind the example
-
-The project uses [Next.js](https://github.com/vercel/next.js), which is a framework for server-rendered React apps.
-It includes `@mui/material` and its peer dependencies, including `emotion`, the default style engine in MUI v5. If you prefer, you can [use styled-components instead](https://mui.com/guides/interoperability/#styled-components).
-
-## The link component
-
-Next.js has [a custom Link component](https://nextjs.org/docs/api-reference/next/link).
-The example folder provides adapters for usage with MUI.
-More information [in the documentation](https://mui.com/guides/routing/#next-js).
-
-## What's next?
-
-<!-- #default-branch-switch -->
-
-You now have a working example project.
-You can head back to the documentation, continuing browsing it from the [templates](https://mui.com/getting-started/templates/) section.
