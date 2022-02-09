@@ -1,3 +1,5 @@
+<div align="center">
+
 # Linwood Sky
 
 > Visualize your data like a pro.
@@ -13,6 +15,8 @@
     <a href="https://twitter.com/LinwoodCloud"><b>Twitter</b></a> •
     <a href="CONTRIBUTING.md"><b>Contribute</b></a>
 </p>  
+
+</div>
 
 ---
 
