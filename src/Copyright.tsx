@@ -1,15 +1,19 @@
-import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import MuiLink from '@mui/material/Link';
+import Image from 'next/image';
+import { Container } from '@mui/material';
 
 export default function Copyright() {
   return (
+    <Container style={{textAlign: "center"}}>
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
-      <MuiLink color="inherit" href="https://mui.com/">
-        Your Website
+      <MuiLink color="inherit" href="https://linwood.dev">
+        Linwood
       </MuiLink>{' '}
       {new Date().getFullYear()}.
     </Typography>
+    <Image src="/powered-by-vercel.svg" width={212} height={44} />
+    </Container>
   );
 }

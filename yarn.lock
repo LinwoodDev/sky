@@ -110,7 +110,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/cache@npm:^11.7.1, @emotion/cache@npm:latest":
+"@emotion/cache@npm:^11.7.1":
   version: 11.7.1
   resolution: "@emotion/cache@npm:11.7.1"
   dependencies:
@@ -146,7 +146,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/react@npm:latest":
+"@emotion/react@npm:^11.7.1":
   version: 11.7.1
   resolution: "@emotion/react@npm:11.7.1"
   dependencies:
@@ -182,7 +182,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/server@npm:latest":
+"@emotion/server@npm:^11.4.0":
   version: 11.4.0
   resolution: "@emotion/server@npm:11.4.0"
   dependencies:
@@ -206,7 +206,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/styled@npm:latest":
+"@emotion/styled@npm:^11.6.0":
   version: 11.6.0
   resolution: "@emotion/styled@npm:11.6.0"
   dependencies:
@@ -306,7 +306,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/icons-material@npm:latest":
+"@mui/icons-material@npm:^5.4.1":
   version: 5.4.1
   resolution: "@mui/icons-material@npm:5.4.1"
   dependencies:
@@ -322,7 +322,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/material@npm:latest":
+"@mui/material@npm:^5.4.1":
   version: 5.4.1
   resolution: "@mui/material@npm:5.4.1"
   dependencies:
@@ -588,7 +588,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:latest":
+"@types/node@npm:^17.0.16":
   version: 17.0.16
   resolution: "@types/node@npm:17.0.16"
   checksum: 2d452a9e0ee7ec83d447d66dd2baf4dd05ef2fbcda39b06f73d86b36d5150d86c43a733d534d77467e7782104756944d42a35ed4b64113bda341b8334ee4d01d
@@ -627,7 +627,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:latest":
+"@types/react@npm:*, @types/react@npm:^17.0.39":
   version: 17.0.39
   resolution: "@types/react@npm:17.0.39"
   dependencies:
@@ -1199,7 +1199,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:latest":
+"eslint-config-next@npm:^12.0.10":
   version: 12.0.10
   resolution: "eslint-config-next@npm:12.0.10"
   dependencies:
@@ -1372,7 +1372,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:latest":
+"eslint@npm:^8.8.0":
   version: 8.8.0
   resolution: "eslint@npm:8.8.0"
   dependencies:
@@ -2046,21 +2046,21 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "linwood-sky@workspace:."
   dependencies:
-    "@emotion/cache": latest
-    "@emotion/react": latest
-    "@emotion/server": latest
-    "@emotion/styled": latest
-    "@mui/icons-material": latest
-    "@mui/material": latest
-    "@types/node": latest
-    "@types/react": latest
+    "@emotion/cache": ^11.7.1
+    "@emotion/react": ^11.7.1
+    "@emotion/server": ^11.4.0
+    "@emotion/styled": ^11.6.0
+    "@mui/icons-material": ^5.4.1
+    "@mui/material": ^5.4.1
+    "@types/node": ^17.0.16
+    "@types/react": ^17.0.39
     clsx: ^1.1.1
-    eslint: latest
-    eslint-config-next: latest
-    next: latest
-    react: latest
-    react-dom: latest
-    typescript: latest
+    eslint: ^8.8.0
+    eslint-config-next: ^12.0.10
+    next: ^12.0.10
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    typescript: ^4.5.5
   languageName: unknown
   linkType: soft
 
@@ -2181,7 +2181,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:latest":
+"next@npm:^12.0.10":
   version: 12.0.10
   resolution: "next@npm:12.0.10"
   dependencies:
@@ -2494,7 +2494,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:latest":
+"react-dom@npm:^17.0.2":
   version: 17.0.2
   resolution: "react-dom@npm:17.0.2"
   dependencies:
@@ -2536,7 +2536,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:latest":
+"react@npm:^17.0.2":
   version: 17.0.2
   resolution: "react@npm:17.0.2"
   dependencies:
@@ -2969,7 +2969,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:latest":
+"typescript@npm:^4.5.5":
   version: 4.5.5
   resolution: "typescript@npm:4.5.5"
   bin:
@@ -2979,7 +2979,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@latest#~builtin<compat/typescript>":
+"typescript@patch:typescript@^4.5.5#~builtin<compat/typescript>":
   version: 4.5.5
   resolution: "typescript@patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=493e53"
   bin:

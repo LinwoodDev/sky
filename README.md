@@ -37,3 +37,11 @@ You can generate charts, tables, and graphs from your data and share them with o
 yarn
 yarn dev
 ```
+
+---
+
+<div align="center">
+
+![Powered by Vercel](public/powered-by-vercel.svg)
+
+</div>
