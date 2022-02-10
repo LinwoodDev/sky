@@ -42,6 +42,6 @@ yarn dev
 
 <div align="center">
 
-![Powered by Vercel](public/powered-by-vercel.svg)
+[![Powered by Vercel](public/powered-by-vercel.svg)](https://vercel.com?utm_source=Linwood&utm_campaign=oss)
 
 </div>
