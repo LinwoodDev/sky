@@ -1,7 +1,7 @@
 {
     "$schema": "https://openapi.vercel.sh/vercel.json",
     "functions": {
-        "api/[label]/[value]": {
+        "pages/api/badge/**/*.ts": {
             "includeFiles": "templates/"
         }
     }
