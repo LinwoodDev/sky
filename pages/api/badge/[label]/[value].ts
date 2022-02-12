@@ -11,7 +11,7 @@ const template = ejs.compile(fs.readFileSync(join(process.cwd(), "templates", "b
 
 const ctx = canvas.getContext('2d')
 
-ctx.font = "28px Roboto";
+ctx.font = "Roboto 28px";
 export default function handle(req: NextApiRequest, res: NextApiResponse) {
     const { label, value } = req.query;
     // Render svg image
