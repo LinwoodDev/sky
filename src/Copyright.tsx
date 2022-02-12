@@ -5,7 +5,7 @@ import { Container } from '@mui/material';
 
 export default function Copyright() {
   return (
-    <Container style={{textAlign: "center"}}>
+    <Container style={{textAlign: "center", marginTop: 20}}>
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
       <MuiLink color="inherit" href="https://linwood.dev">

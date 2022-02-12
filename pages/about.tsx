@@ -21,7 +21,10 @@ const About: NextPage = () => {
         }}
       >
         <Typography variant="h4" component="h1" gutterBottom>
-          MUI v5 + Next.js with TypeScript example
+          About
+        </Typography>
+        <Typography gutterBottom>
+          <Link href="https://github.com/LinwoodCloud/sky">GitHub</Link>
         </Typography>
         <Box maxWidth="sm">
           <Button variant="contained" component={Link} noLinkStyle href="/">
