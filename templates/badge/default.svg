@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="<%=labelWidth + valueWidth + 60>" height="100" viewBox="0 0 400 100" fill="none">
-    <rect width="400" height="100" rx="20" fill="#EADDFF" />
+<svg xmlns="http://www.w3.org/2000/svg" width="<%=labelWidth + valueWidth + 60%>" height="100" viewBox="0 0 <%=labelWidth + valueWidth + 60%> 100" fill="none">
+    <rect width="<%=labelWidth + valueWidth + 60%>" height="100" rx="20" fill="#EADDFF" />
     <rect width="<%=labelWidth + 30%>" height="100" rx="20" fill="#6750A4" />
     <text x="<%=labelWidth + 15%>" y="57" fill="white" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="28" letter-spacing="0em" text-anchor="end"><%=label%></text>
     <text x="<%=labelWidth + 45%>" y="57" fill="#21005E" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="28" letter-spacing="0em"><%=value%></text>
