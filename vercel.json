@@ -2,7 +2,7 @@
     "$schema": "https://openapi.vercel.sh/vercel.json",
     "functions": {
         "pages/api/badge/**/*.ts": {
-            "includeFiles": "templates/"
+            "includeFiles": "templates/**|fonts/**"
         }
     }
 }
