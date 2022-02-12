@@ -1,10 +1,6 @@
-<svg width="400" height="100" viewBox="0 0 400 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100" viewBox="0 0 400 100" fill="none">
     <rect width="400" height="100" rx="20" fill="#EADDFF" />
-    <path d="M0 0H170C181.046 0 190 8.95431 190 20V80C190 91.0457 181.046 100 170 100H0V0Z" fill="#6750A4" />
-    <text fill="white" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="32" letter-spacing="0em">
-        <tspan x="78.1875" y="60.9375"><%=label%></tspan>
-    </text>
-    <text fill="#21005E" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="32" letter-spacing="0em">
-        <tspan x="200" y="60.9375"><%=value%></tspan>
-    </text>
+    <path d="M0 0H160C171.046 0 180 8.95431 180 20V80C180 91.0457 171.046 100 160 100H0V0Z" fill="#6750A4" />
+    <text x="150" y="57" fill="white" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="28" letter-spacing="0em" text-anchor="end"><%=label%></text>
+    <text x="200" y="57" fill="#21005E" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="28" letter-spacing="0em"><%=value%></text>
 </svg>
