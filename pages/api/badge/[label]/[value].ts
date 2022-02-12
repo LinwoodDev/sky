@@ -2,7 +2,9 @@ import { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import ejs from "ejs";
 import { join } from "path";
-import { createCanvas } from "@napi-rs/canvas";
+import { createCanvas, GlobalFonts } from "@napi-rs/canvas";
+
+GlobalFonts.registerFromPath(join(process.cwd(), 'fonts', 'Roboto.ttf'), 'Roboto')
 
 const canvas = createCanvas(200, 200)
 const template = ejs.compile(fs.readFileSync(join(process.cwd(), "templates", "badge", "default.svg"), { encoding: "utf8" }).toString());
