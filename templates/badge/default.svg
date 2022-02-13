@@ -1,6 +1,6 @@
 <%labelWidth=label.length*10.75%>
 <%valueWidth=value.length*10.75%>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="<%=labelWidth + valueWidth + 32%>" height="50" viewBox="0 0 <%=labelWidth + valueWidth + 32%> 50" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="<%=labelWidth + valueWidth + 32%>" height="32" viewBox="0 0 <%=labelWidth + valueWidth + 32%> 32" fill="none">
     <defs>
         <style type="text/css">
           @font-face {
@@ -10,12 +10,12 @@
         </style>
     </defs>
 
-    <rect width="<%=labelWidth + valueWidth + 32%>" height="50" rx="20" fill="#EADDFF" />
-    <rect width="<%=labelWidth + 16%>" height="50" rx="20" fill="#6750A4" />
-    <text x="<%=labelWidth + 8%>" y="29" fill="white" lengthAdjust="spacingAndGlyphs" textLength="<%=labelWidth%>" font-family="Roboto Mono" font-size="16" letter-spacing="0em" text-anchor="end">
+    <rect width="<%=labelWidth + valueWidth + 32%>" height="32" rx="12" fill="#EADDFF" />
+    <rect width="<%=labelWidth + 16%>" height="32" rx="12" fill="#6750A4" />
+    <text x="<%=labelWidth + 8%>" y="20" fill="white" lengthAdjust="spacingAndGlyphs" textLength="<%=labelWidth%>" font-family="Roboto Mono" font-size="16" letter-spacing="0em" text-anchor="end">
         <%=label%>
     </text>
-    <text x="<%=labelWidth + 24%>" y="29" fill="#21005E" lengthAdjust="spacingAndGlyphs" textLength="<%=valueWidth%>" font-family="Roboto Mono" font-size="16" letter-spacing="0em">
+    <text x="<%=labelWidth + 24%>" y="20" fill="#21005E" lengthAdjust="spacingAndGlyphs" textLength="<%=valueWidth%>" font-family="Roboto Mono" font-size="16" letter-spacing="0em">
         <%=value%>
     </text>
 </svg>
