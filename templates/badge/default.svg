@@ -1,6 +1,6 @@
 <%labelWidth=label.length*10.75%>
 <%valueWidth=value.length*10.75%>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="<%=labelWidth + valueWidth + 60%>" height="100" viewBox="0 0 <%=labelWidth + valueWidth + 32%> 50" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="<%=labelWidth + valueWidth + 32%>" height="50" viewBox="0 0 <%=labelWidth + valueWidth + 32%> 50" fill="none">
     <defs>
         <style type="text/css">
           @font-face {
