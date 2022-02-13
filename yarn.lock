@@ -551,105 +551,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@napi-rs/canvas-android-arm64@npm:0.1.19":
-  version: 0.1.19
-  resolution: "@napi-rs/canvas-android-arm64@npm:0.1.19"
-  conditions: os=android & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@napi-rs/canvas-darwin-arm64@npm:0.1.19":
-  version: 0.1.19
-  resolution: "@napi-rs/canvas-darwin-arm64@npm:0.1.19"
-  conditions: os=darwin & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@napi-rs/canvas-darwin-x64@npm:0.1.19":
-  version: 0.1.19
-  resolution: "@napi-rs/canvas-darwin-x64@npm:0.1.19"
-  conditions: os=darwin & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@napi-rs/canvas-linux-arm-gnueabihf@npm:0.1.19":
-  version: 0.1.19
-  resolution: "@napi-rs/canvas-linux-arm-gnueabihf@npm:0.1.19"
-  conditions: os=linux & cpu=arm
-  languageName: node
-  linkType: hard
-
-"@napi-rs/canvas-linux-arm64-gnu@npm:0.1.19":
-  version: 0.1.19
-  resolution: "@napi-rs/canvas-linux-arm64-gnu@npm:0.1.19"
-  conditions: os=linux & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@napi-rs/canvas-linux-arm64-musl@npm:0.1.19":
-  version: 0.1.19
-  resolution: "@napi-rs/canvas-linux-arm64-musl@npm:0.1.19"
-  conditions: os=linux & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@napi-rs/canvas-linux-x64-gnu@npm:0.1.19":
-  version: 0.1.19
-  resolution: "@napi-rs/canvas-linux-x64-gnu@npm:0.1.19"
-  conditions: os=linux & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@napi-rs/canvas-linux-x64-musl@npm:0.1.19":
-  version: 0.1.19
-  resolution: "@napi-rs/canvas-linux-x64-musl@npm:0.1.19"
-  conditions: os=linux & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@napi-rs/canvas-win32-x64-msvc@npm:0.1.19":
-  version: 0.1.19
-  resolution: "@napi-rs/canvas-win32-x64-msvc@npm:0.1.19"
-  conditions: os=win32 & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@napi-rs/canvas@npm:^0.1.19":
-  version: 0.1.19
-  resolution: "@napi-rs/canvas@npm:0.1.19"
-  dependencies:
-    "@napi-rs/canvas-android-arm64": 0.1.19
-    "@napi-rs/canvas-darwin-arm64": 0.1.19
-    "@napi-rs/canvas-darwin-x64": 0.1.19
-    "@napi-rs/canvas-linux-arm-gnueabihf": 0.1.19
-    "@napi-rs/canvas-linux-arm64-gnu": 0.1.19
-    "@napi-rs/canvas-linux-arm64-musl": 0.1.19
-    "@napi-rs/canvas-linux-x64-gnu": 0.1.19
-    "@napi-rs/canvas-linux-x64-musl": 0.1.19
-    "@napi-rs/canvas-win32-x64-msvc": 0.1.19
-  dependenciesMeta:
-    "@napi-rs/canvas-android-arm64":
-      optional: true
-    "@napi-rs/canvas-darwin-arm64":
-      optional: true
-    "@napi-rs/canvas-darwin-x64":
-      optional: true
-    "@napi-rs/canvas-linux-arm-gnueabihf":
-      optional: true
-    "@napi-rs/canvas-linux-arm64-gnu":
-      optional: true
-    "@napi-rs/canvas-linux-arm64-musl":
-      optional: true
-    "@napi-rs/canvas-linux-x64-gnu":
-      optional: true
-    "@napi-rs/canvas-linux-x64-musl":
-      optional: true
-    "@napi-rs/canvas-win32-x64-msvc":
-      optional: true
-  checksum: 39fd50c54ea014eac3f5d0bf4ff69ad4f326d80743e3d6e736fe3e961c1e039a822cc4d2465b2eda9c8d7b4a1c638d6e0f78b05fc7fb42d9a9c373122af010e6
-  languageName: node
-  linkType: hard
-
 "@next/env@npm:12.0.10":
   version: 12.0.10
   resolution: "@next/env@npm:12.0.10"
@@ -2311,7 +2212,6 @@ __metadata:
     "@mui/icons-material": ^5.4.1
     "@mui/lab": ^5.0.0-alpha.68
     "@mui/material": ^5.4.1
-    "@napi-rs/canvas": ^0.1.19
     "@types/ejs": ^3.1.0
     "@types/node": ^17.0.17
     "@types/react": ^17.0.39
