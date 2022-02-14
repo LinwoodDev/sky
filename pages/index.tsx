@@ -9,6 +9,7 @@ import Copyright from '../src/Copyright';
 import { useRouter } from 'next/router';
 import { List, ListItemButton, ListItemIcon, ListItemText, ListSubheader } from '@mui/material';
 import AccessAlarmOutlinedIcon from '@mui/icons-material/AccessAlarmOutlined';
+import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -39,6 +40,14 @@ const Home: NextPage = () => {
               <AccessAlarmOutlinedIcon />
             </ListItemIcon>
             <ListItemText primary="Countdown" />
+          </ListItemButton>
+          <ListItemButton
+            onClick={() => router.push("/badge")}
+          >
+            <ListItemIcon>
+              <BadgeOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary="Badge" />
           </ListItemButton>
         </List>
         <Link href="/about" color="secondary">
