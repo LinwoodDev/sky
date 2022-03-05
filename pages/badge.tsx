@@ -1,10 +1,12 @@
-import { Container, Box, Typography, TextField, Stack, Button, IconButton, Snackbar } from '@mui/material'
+import { Box, Button, Container, Group, Text, TextInput } from '@mantine/core'
+import { useNotifications } from '@mantine/notifications';
 import React from 'react'
 
 export default function BadgePage() {
     // as TextField
     const [label, setLabel] = React.useState('Hello')
     const [value, setValue] = React.useState('World')
+    const notifications = useNotifications();
 
     const constructLink = (): string => {
         const labelEncoded = encodeURIComponent(label)
@@ -14,26 +16,15 @@ export default function BadgePage() {
     const copyLink = () => {
         const link = window.location.origin + constructLink()
         navigator.clipboard.writeText(link)
-        setCopyLinkOpen(true);
+        notifications.showNotification({
+          title: 'Link copied',
+          message: 'The link has been copied to your clipboard',
+          color: 'green'
+        })
     }
-    const [copyLinkOpen, setCopyLinkOpen] = React.useState(false);
-
-    const handleCopyLinkClose = (event: React.SyntheticEvent | Event, reason?: string) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-
-        setCopyLinkOpen(false);
-    };
 
     return (
-        <Container maxWidth="lg">
-            <Snackbar
-                open={copyLinkOpen}
-                autoHideDuration={6000}
-                onClose={handleCopyLinkClose}
-                message="Link copied to clipboard"
-            />
+        <Container size="lg">
             <Box
                 sx={{
                     my: 4,
@@ -43,27 +34,30 @@ export default function BadgePage() {
                     alignItems: 'center',
                 }}
             >
-                <Typography variant="h4" component="h1" gutterBottom>
+                <Text component="h1">
                     Configure Badge
-                </Typography>
-                <Stack spacing={1}>
-                    <TextField
+                </Text>
+                <Group direction="column">
+
+                    <TextInput
                         label="Label"
                         value={label}
                         onChange={(e) => setLabel(e.target.value)}
                     />
-                    <TextField
+                    <TextInput
                         label="Value"
                         value={value}
                         onChange={(e) => setValue(e.target.value)}
                     />
-                </Stack>
-                <Stack spacing={1} mt={4} maxWidth="md" alignItems="center">
+                </Group>
+                <Container size="md">
+                <Group direction="column">
                     <img src={constructLink()} style={{maxWidth: "100%"}} />
-                    <Button variant="contained" onClick={copyLink}>
+                    <Button variant="filled" onClick={copyLink}>
                         Copy to clipboard
                     </Button>
-                </Stack>
+                </Group>
+                </Container>
             </Box>
         </Container>
     )

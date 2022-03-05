@@ -1,16 +1,11 @@
 import * as React from 'react';
 import type { NextPage } from 'next';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import { Anchor, Box, Button, Container, Text } from '@mantine/core';
 import Link from '../src/Link';
-import ProTip from '../src/ProTip';
-import Copyright from '../src/Copyright';
 
 const About: NextPage = () => {
   return (
-    <Container maxWidth="lg">
+    <Container size="lg">
       <Box
         sx={{
           my: 4,
@@ -20,19 +15,12 @@ const About: NextPage = () => {
           alignItems: 'center',
         }}
       >
-        <Typography variant="h4" component="h1" gutterBottom>
+        <Text component="h1">
           About
-        </Typography>
-        <Typography gutterBottom>
+        </Text>
+        <Text>
           <Link href="https://github.com/LinwoodCloud/sky">GitHub</Link>
-        </Typography>
-        <Box maxWidth="sm">
-          <Button variant="contained" component={Link} noLinkStyle href="/">
-            Go to the home page
-          </Button>
-        </Box>
-        <ProTip />
-        <Copyright />
+        </Text>
       </Box>
     </Container>
   );

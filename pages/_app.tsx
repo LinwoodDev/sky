@@ -1,38 +1,48 @@
-import * as React from 'react';
-import Head from 'next/head';
 import { AppProps } from 'next/app';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { CacheProvider, EmotionCache } from '@emotion/react';
-import theme from '../src/theme';
-import createEmotionCache from '../src/createEmotionCache';
-import SkyAppBar from '../src/AppBar';
-import AdapterMoment from '@mui/lab/AdapterMoment';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import Head from 'next/head';
+import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core';
+import { NotificationsProvider } from '@mantine/notifications';
+import SkyShell from '../src/Shell';
+import { useState } from 'react';
+import { useHotkeys, useLocalStorageValue } from '@mantine/hooks';
 
 
-// Client-side cache, shared for the whole session of the user in the browser.
-const clientSideEmotionCache = createEmotionCache();
+export default function App(props: AppProps) {
+  const { Component, pageProps } = props;
+  const [colorScheme, setColorScheme] = useLocalStorageValue<ColorScheme>({
+    key: 'mantine-color-scheme',
+    defaultValue: 'light',
+  });
 
-interface MyAppProps extends AppProps {
-  emotionCache?: EmotionCache;
-}
+  const toggleColorScheme = (value?: ColorScheme) =>
+    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
 
-export default function MyApp(props: MyAppProps) {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  useHotkeys([['mod+J', () => toggleColorScheme()]]);
+
+
   return (
-    <LocalizationProvider dateAdapter={AdapterMoment}>
-    <CacheProvider value={emotionCache}>
+    <>
       <Head>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <title>Linwood Sky</title>
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <SkyAppBar />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </CacheProvider>
-    </LocalizationProvider>
+      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+        <MantineProvider
+          withGlobalStyles
+          theme={{
+            /** Put your mantine theme override here */
+            colorScheme
+          }}
+          withNormalizeCSS
+        >
+          <NotificationsProvider>
+            <SkyShell>
+              <Component {...pageProps} />
+            </SkyShell>
+          </NotificationsProvider>
+
+        </MantineProvider>
+      </ColorSchemeProvider>
+    </>
   );
 }

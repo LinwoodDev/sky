@@ -1,9 +1,8 @@
-import { DateTimePicker } from '@mui/lab';
-import { Box, Button, Container, Stack, Tab, Tabs, TextField, Typography } from '@mui/material';
+import { Box, Button, Container, Group, Tab, Tabs, Text, TextInput } from '@mantine/core';
+import { DatePicker } from '@mantine/dates';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import Link from '../src/Link';
-import ProTip from '../src/ProTip';
 
 interface TimeLeft {
     days: number;
@@ -50,7 +49,7 @@ export function CountdownView({ date }: { date: Date }) {
             setTimeLeft(calculateDifference());
         }, 1000);
     });
-    return <Container maxWidth="lg">
+    return <Container size="lg">
         <Box
             sx={{
                 my: 4,
@@ -60,7 +59,7 @@ export function CountdownView({ date }: { date: Date }) {
                 alignItems: 'center',
             }}
         >
-            <Typography variant="h4" component="h1" gutterBottom color={timeLeft.inPast ? "primary" : ""}>
+            <Text component="h1" color={timeLeft.inPast ? "primary" : ""}>
                 {timeLeft.days > 0 && <>
                     {timeLeft.days}:
                 </>}
@@ -73,15 +72,17 @@ export function CountdownView({ date }: { date: Date }) {
                 {timeLeft.seconds > 0 && <>
                     {timeLeft.seconds}
                 </>}
-            </Typography>
-            <Typography>
+            </Text>
+            <Text>
                 {date.toLocaleString()}
-            </Typography>
-            <Box maxWidth="sm">
-                <Button variant="contained" component={Link} noLinkStyle href="/countdown">
-                    Configure
-                </Button>
-            </Box>
+            </Text>
+            <Container size="sm">
+                <Link href="/countdown" passHref>
+                    <Button variant="filled" component="a">
+                        Configure
+                    </Button>
+                </Link>
+            </Container>
         </Box>
     </Container>
 }
@@ -95,11 +96,11 @@ export function CountdownConfigureView({ }: {}) {
     const [seconds, setSeconds] = React.useState(0);
 
 
-    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    const handleChange = (newValue: number) => {
         setValue(newValue);
     };
     return (
-        <Container maxWidth="lg">
+        <Container size="lg">
             <Box
                 sx={{
                     my: 4,
@@ -107,32 +108,33 @@ export function CountdownConfigureView({ }: {}) {
                     flexDirection: 'column',
                 }}
             >
-                <Typography variant="h4" component="h1" gutterBottom>
+                <Text component="h1">
                     Configure Countdown
-                </Typography>
+                </Text>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <Tabs value={value} onChange={handleChange}>
+                    <Tabs active={value} onTabChange={handleChange}>
                         <Tab label="Date time" />
                         <Tab label="Duration" />
                     </Tabs>
                     <TabPanel value={value} index={0}>
-                        <Stack spacing={3}>
-                            <DateTimePicker
-                                renderInput={(props) => <TextField {...props} />}
+                        <Group direction='column' spacing={3}>
+                            <DatePicker
                                 label="Date time"
                                 value={dateTime}
                                 onChange={(newValue) => {
                                     setDateTime(new Date(newValue ?? new Date()));
                                 }}
                             />
-                            <Button variant="contained" component={Link} noLinkStyle href={`/countdown?time=${dateTime?.toUTCString() ?? ''}`}>
-                                Go
-                            </Button>
-                        </Stack>
+                            <Link href={`/countdown?time=${dateTime?.toUTCString() ?? ''}`} passHref>
+                                <Button variant="filled" component="a">
+                                    Go
+                                </Button>
+                            </Link>
+                        </Group>
                     </TabPanel>
                     <TabPanel value={value} index={1}>
-                        <Stack spacing={3}>
-                            <TextField
+                        <Group direction='column' spacing={3}>
+                            <TextInput
                                 label="Days"
                                 type="number"
                                 value={days}
@@ -140,7 +142,7 @@ export function CountdownConfigureView({ }: {}) {
                                     setDays(parseInt(event.target.value));
                                 }}
                             />
-                            <TextField
+                            <TextInput
                                 label="Hours"
                                 type="number"
                                 value={hours}
@@ -148,7 +150,7 @@ export function CountdownConfigureView({ }: {}) {
                                     setHours(parseInt(event.target.value));
                                 }}
                             />
-                            <TextField
+                            <TextInput
                                 label="Minutes"
                                 type="number"
                                 value={minutes}
@@ -156,7 +158,7 @@ export function CountdownConfigureView({ }: {}) {
                                     setMinutes(parseInt(event.target.value));
                                 }}
                             />
-                            <TextField
+                            <TextInput
                                 label="Seconds"
                                 type="number"
                                 value={seconds}
@@ -164,10 +166,12 @@ export function CountdownConfigureView({ }: {}) {
                                     setSeconds(parseInt(event.target.value));
                                 }}
                             />
-                            <Button variant="contained" component={Link} noLinkStyle href={`/countdown?time=${new Date(Date.now() + (days * 24 * 60 * 60 * 1000) + (hours * 60 * 60 * 1000) + (minutes * 60 * 1000) + (seconds * 1000)).toUTCString()}`}>
-                                Go
-                            </Button>
-                        </Stack>
+                            <Link href={`/countdown?time=${new Date(Date.now() + (days * 24 * 60 * 60 * 1000) + (hours * 60 * 60 * 1000) + (minutes * 60 * 1000) + (seconds * 1000)).toUTCString()}`} passHref>
+                                <Button variant="filled" component="a">
+                                    Go
+                                </Button>
+                            </Link>
+                        </Group>
                     </TabPanel>
                 </Box>
             </Box>
@@ -194,7 +198,7 @@ function TabPanel(props: TabPanelProps) {
         >
             {value === index && (
                 <Box sx={{ p: 3 }}>
-                    <Typography>{children}</Typography>
+                    <Text>{children}</Text>
                 </Box>
             )}
         </div>
