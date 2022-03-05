@@ -2,10 +2,12 @@ import { PropsWithChildren, useState } from 'react';
 import { Sun as SunIcon, Moon as MoonIcon, House as HouseIcon, Info as InfoIcon, Plus as PlusIcon } from 'phosphor-react';
 import { ActionIcon, AppShell, Burger, Button, Group, Header, MediaQuery, Navbar, Text, Title, UnstyledButton, useMantineColorScheme, useMantineTheme } from '@mantine/core';
 import ListButton from './ListButton';
+import { useRouter } from 'next/router';
 
 export default function SkyShell({ children }: PropsWithChildren<{}>) {
   const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
+  const router = useRouter();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === 'dark';
 
@@ -29,9 +31,9 @@ export default function SkyShell({ children }: PropsWithChildren<{}>) {
         >
 
           <Navbar.Section grow mt="sm">
-            <ListButton color="green" icon={<PlusIcon />} label="Create" href="/create" />
-            <ListButton color="blue" icon={<HouseIcon />} label="Home" href="/" />
-            <ListButton color="violet" icon={<InfoIcon />} label="About" href="/about" />
+            <ListButton selected={router.pathname == '/create'} color="green" icon={<PlusIcon />} label="Create" href="/create" />
+            <ListButton selected={router.pathname == '/'} color="blue" icon={<HouseIcon />} label="Home" href="/" />
+            <ListButton selected={router.pathname == '/about'} color="violet" icon={<InfoIcon />} label="About" href="/about" />
           </Navbar.Section>
         </Navbar>
       }

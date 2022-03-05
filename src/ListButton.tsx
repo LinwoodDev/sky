@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react'
 
 type Props = {
-    color: MantineColor;
+    color?: MantineColor;
     icon: React.ReactNode;
     label: string;
     href?: string;
