@@ -6,10 +6,9 @@ import ListButton from '../src/ListButton'
 import { db } from '../lib/db';
 import { useRouter } from 'next/router';
 import { ActivityTypes } from '../lib/activity';
+import SkyShell from '../src/Shell';
 
 
-const types = {
-}
 export default function CreatePage() {
     const [type, setType] = React.useState('countdown')
     const [name, setName] = React.useState('');
@@ -28,41 +27,47 @@ export default function CreatePage() {
     }
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'stretch', height: "100%" }}>
-            <Box sx={{ flex: 1 }}>
-                <Container size="lg">
-                    <Title order={2}>Create</Title>
-                    <Container size="xs" sx={{ marginTop: "1em", marginBottom: "2em" }}>
-                        <TextInput
-                            label="Name"
-                            placeholder="The name of your new activity (Optional)"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                        />
+        <SkyShell>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'stretch', height: "100%" }}>
+                <Box sx={{ flex: 1 }}>
+                    <Container size="lg">
+                        <Title order={2}>Create</Title>
+                        <Container size="xs" sx={{ marginTop: "1em", marginBottom: "2em" }}>
+                            <TextInput
+                                label="Name"
+                                placeholder="The name of your new activity"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                            />
+                        </Container>
+                        <Container size="sm">
+                            <Group direction='column' spacing={1}>
+                                {ActivityTypes.map((e) => {
+                                    const Icon = e.icon;
+                                    return (
+                                        <ListButton
+                                            color={e.color}
+                                            icon={<Icon />}
+                                            label={e.name}
+                                            selected={type === e.type}
+                                            onClick={() => setType(e.type)}
+                                            key={e.type} />
+                                    );
+                                })}
+                            </Group>
+                        </Container>
                     </Container>
-                    <Container size="sm">
-                        <Group direction='column' spacing={1}>
-                            {ActivityTypes.map((e) => {
-                                const Icon = e.icon;
-                                return (
-                                    <ListButton
-                                        color={e.color}
-                                        icon={<Icon />}
-                                        label={e.name}
-                                        selected={type === e.type}
-                                        onClick={() => setType(e.type)}
-                                        menu key={e.type} />
-                                );
-                            })}
-                        </Group>
-                    </Container>
-                </Container>
-            </Box>
+                </Box>
 
-            <Group position={'right'}>
-                <Button variant='outline'>Try</Button>
-                <Button onClick={create}>Create</Button>
-            </Group>
-        </Box>
+                <Group position={'right'}>
+                    {name &&
+                        <Button onClick={create}>Create</Button>
+                    }
+                    {!name &&
+                        <Button variant='outline'>Try</Button>
+                    }
+                </Group>
+            </Box>
+        </SkyShell>
     )
 }

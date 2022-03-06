@@ -5,18 +5,18 @@ import React from 'react'
 type Props = {
     color?: MantineColor;
     icon: React.ReactNode;
-    label: string;
+    label: React.ReactNode;
     href?: string;
-    menu?: boolean;
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
     selected?: boolean;
+    description?: React.ReactNode;
 }
 
 const useStyles = createStyles((theme) => ({
     button: {
         display: 'block',
         width: '100%',
-        padding: theme.spacing.xs,
+        padding: theme.spacing.sm,
         borderRadius: theme.radius.sm,
         color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
 
@@ -28,21 +28,28 @@ const useStyles = createStyles((theme) => ({
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
     }
 }));
-export default function ListButton({ color, icon, label, href, menu, onClick, selected }: Props) {
+export default function ListButton({ color, icon, label, href, onClick, selected, description }: Props) {
     const { classes, cx } = useStyles();
     const component = (
-            <UnstyledButton className={selected ? cx(classes.button, classes.selected) : classes.button} onClick={onClick}>
-                <Group>
-                    <ThemeIcon color={color} variant="light">
-                        {icon}
-                    </ThemeIcon>
-                    <Text size={menu ? "md" : "sm"}>
+        <UnstyledButton className={selected ? cx(classes.button, classes.selected) : classes.button} onClick={onClick}>
+            <Group>
+                <ThemeIcon color={color} variant="light">
+                    {icon}
+                </ThemeIcon>
+                <Group direction='column' spacing={1}>
+                    <Text size="md">
                         {label}
                     </Text>
+                    {description &&
+                        <Text size="sm" color="gray.5">
+                            {description}
+                        </Text>
+                    }
                 </Group>
-            </UnstyledButton>
+            </Group>
+        </UnstyledButton>
     )
-    if(href) {
+    if (href) {
         return (
             <Link href={href}>
                 {component}

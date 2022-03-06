@@ -36,9 +36,7 @@ export default function App(props: AppProps) {
           withNormalizeCSS
         >
           <NotificationsProvider>
-            <SkyShell>
-              <Component {...pageProps} />
-            </SkyShell>
+            <Component {...pageProps} />
           </NotificationsProvider>
 
         </MantineProvider>

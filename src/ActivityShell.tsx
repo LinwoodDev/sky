@@ -1,15 +1,23 @@
 import { PropsWithChildren, useState } from 'react';
-import { Sun as SunIcon, Moon as MoonIcon, House as HouseIcon, Info as InfoIcon, Plus as PlusIcon } from 'phosphor-react';
-import { ActionIcon, AppShell, Burger, Button, Group, Header, MediaQuery, Navbar, Text, Title, UnstyledButton, useMantineColorScheme, useMantineTheme } from '@mantine/core';
+import { Share as ShareIcon, Palette as PaletteIcon, Faders as FadersIcon, Sun as SunIcon, Moon as MoonIcon, House as HouseIcon, Info as InfoIcon, Gear as GearIcon } from 'phosphor-react';
+import { ActionIcon, AppShell, Box, Burger, Button, Divider, Group, Header, MediaQuery, Navbar, Paper, Text, ThemeIcon, Title, useMantineColorScheme, useMantineTheme } from '@mantine/core';
 import ListButton from './ListButton';
 import { useRouter } from 'next/router';
+import { Activity, getActivityType, loadActivityFromQuery } from '../lib/activity';
+import React from 'react';
 
-export default function SkyShell({ children }: PropsWithChildren<{}>) {
+export default function ActivityShell({ children }: PropsWithChildren<{}>) {
   const [opened, setOpened] = useState(false);
   const theme = useMantineTheme();
   const router = useRouter();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === 'dark';
+  const [activity, setActivity] = useState<Activity | undefined>();
+  React.useEffect(() => {
+    loadActivityFromQuery(router.query).then(setActivity);
+  }, [router.query]);
+  const type = activity ? getActivityType(activity.type) : undefined;
+  const TypeIcon = type?.icon ?? SunIcon;
 
   return (
     <AppShell
@@ -31,16 +39,32 @@ export default function SkyShell({ children }: PropsWithChildren<{}>) {
         >
 
           <Navbar.Section grow mt="sm">
-            <ListButton selected={router.pathname === '/create'} color="green" icon={<PlusIcon />} label="Create" href="/create" />
-            <ListButton selected={router.pathname === '/'} color="blue" icon={<HouseIcon />} label="Home" href="/" />
-            <ListButton selected={router.pathname === '/about'} color="violet" icon={<InfoIcon />} label="About" href="/about" />
+            <Group>
+              <ThemeIcon color={type?.color} variant="light">
+                <TypeIcon />
+              </ThemeIcon>
+              <Text>{activity?.name}</Text>
+            </Group>
+            <Divider sx={{ marginTop: "1em", marginBottom: "1em" }} />
+            <ListButton selected={router.pathname === '/activity'} color="green" icon={<FadersIcon />} label="Configuration" href="/activity" />
+            <ListButton selected={router.pathname === '/activity/style'} color="blue" icon={<PaletteIcon />} label="Styling" href="/activity/styling" />
+            <ListButton selected={router.pathname === '/activity/share'} color="orange" icon={<ShareIcon />} label="Share" href="/activity/share" />
+            <ListButton selected={router.pathname === '/activity/settings'} color="violet" icon={<GearIcon />} label="Settings" href="/activity/settings" />
           </Navbar.Section>
-        </Navbar>
+        </ Navbar>
       }
       header={
         <Header height={70} padding="md">
           {/* Handle other responsive styles with MediaQuery component or createStyles function */}
           <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
+            <ActionIcon
+              onClick={() => router.push("/")}
+              title="Home"
+              size="lg"
+              sx={{ marginRight: '1em' }}
+            >
+              <HouseIcon size={24} />
+            </ActionIcon>
             <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
               <Burger
                 opened={opened}
