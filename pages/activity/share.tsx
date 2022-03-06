@@ -4,7 +4,7 @@ import { ActivityProps } from '.';
 import { constructBadgeLink } from '../../lib/badge';
 import ActivityShell from '../../src/ActivityShell'
 import { useRouter } from 'next/router';
-import { Activity } from '../../lib/activity';
+import { Activity, constructActivityRenderLink } from '../../lib/activity';
 import { db } from '../../lib/db';
 import { useNotifications } from '@mantine/notifications';
 import { Check as CheckIcon } from 'phosphor-react';
@@ -48,8 +48,9 @@ export function BadgeSharePage({ activity }: ActivityProps) {
     const { label, value } = activity.data;
     const router = useRouter()
     const notification = useNotifications();
+    const link = constructActivityRenderLink(activity);
     const copyToClipboard = () => {
-        navigator.clipboard.writeText(window.location.origin + constructBadgeLink(label, value));
+        navigator.clipboard.writeText(window.location.origin + link);
         notification.showNotification({
             message: 'Copied to clipboard',
             color: 'green',
@@ -59,10 +60,10 @@ export function BadgeSharePage({ activity }: ActivityProps) {
     return (
         <Container size="md">
             <Center>
-                <Image height="auto" width="auto" styles={{ image: { maxWidth: "100%" } }} src={constructBadgeLink(label, value)} alt="Badge" />
+                <Image height="auto" width="auto" styles={{ image: { maxWidth: "100%" } }} src={link} alt="Badge" />
             </Center>
             <Space h="md" />
-            <TextInput value={window.location.origin + constructBadgeLink(label, value)} readOnly />
+            <TextInput value={window.location.origin + link} readOnly />
             <Space h="md" />
             <Group position="center">
                 <Button onClick={copyToClipboard}>
