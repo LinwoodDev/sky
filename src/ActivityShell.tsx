@@ -50,7 +50,7 @@ export default function ActivityShell({ children }: PropsWithChildren<{}>) {
             </Group>
             <Divider sx={{ marginTop: "1em", marginBottom: "1em" }} />
             <ListButton selected={router.pathname === '/activity'} color="green" icon={<FadersIcon />} label="Configuration" href={`/activity${query}`} />
-            <ListButton selected={router.pathname === '/activity/style'} color="blue" icon={<PaletteIcon />} label="Styling" href={`/activity/styling${query}`} />
+            <ListButton selected={router.pathname === '/activity/styling'} color="blue" icon={<PaletteIcon />} label="Styling" href={`/activity/styling${query}`} />
             <ListButton selected={router.pathname === '/activity/share'} color="orange" icon={<ShareIcon />} label="Share" href={`/activity/share${query}`} />
             <ListButton selected={router.pathname === '/activity/settings'} color="violet" icon={<GearIcon />} label="Settings" href={`/activity/settings${query}`} />
           </Navbar.Section>

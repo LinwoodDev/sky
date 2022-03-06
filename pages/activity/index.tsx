@@ -1,9 +1,9 @@
-import { Box, Button, Center, Container, Group, Loader, Text, TextInput, Title } from '@mantine/core'
+import { Box, Button, Center, Container, Group, Loader, Space, Text, TextInput, Title } from '@mantine/core'
 import { useNotifications } from '@mantine/notifications';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { useRouter } from 'next/router';
 import React from 'react'
-import { Activity } from '../../lib/activity';
+import { Activity, saveActivityFromRouter } from '../../lib/activity';
 import { constructBadgeLink } from '../../lib/badge';
 import { db } from '../../lib/db';
 import ActivityShell from '../../src/ActivityShell';
@@ -42,7 +42,8 @@ export default function ActivityPage() {
                     </Center>
                 }
                 {activity && <>
-                    <Title sx={{ marginBottom: "1em" }}>Configuration</Title>
+                    <Title>Configuration</Title>
+                    <Space h="md" />
                     {view}
                 </>
                 }
@@ -51,33 +52,28 @@ export default function ActivityPage() {
     )
 }
 
-type ActivityProps = {
+export type ActivityProps = {
     activity: Activity
 }
 
 export function BadgePage({ activity }: ActivityProps) {
-    // as TextField
-    const [label, setLabel] = React.useState('Hello')
-    const [value, setValue] = React.useState('World')
+    const [label, setLabel] = React.useState(activity.data.label ?? '')
+    const [value, setValue] = React.useState(activity.data.value ?? '')
     const notifications = useNotifications();
+    const router = useRouter()
 
-    const [preview, setPreview] = React.useState<string>(`<Loader variant="dots" />`);
-
-    React.useEffect(() => {
-        const fetchBadge = async () => {
-            setPreview(await fetch(constructBadgeLink(label, value)).then(res => res.text()));
+    const save = async ({ newLabel, newValue }: { newLabel?: string, newValue?: string }) => {
+        if (newLabel) {
+            setLabel(newLabel);
         }
-        fetchBadge();
-    }, [label, value]);
-
-    const copyLink = () => {
-        const link = window.location.origin + constructBadgeLink(label, value)
-        navigator.clipboard.writeText(link)
-        notifications.showNotification({
-            title: 'Link copied',
-            message: 'The link has been copied to your clipboard',
-            color: 'green'
-        })
+        if (newValue) {
+            setValue(newValue);
+        }
+        activity.data = {
+            label: newLabel ?? label,
+            value: newValue ?? value
+        };
+        await saveActivityFromRouter(router, activity);
     }
 
     return (
@@ -85,14 +81,13 @@ export function BadgePage({ activity }: ActivityProps) {
             <TextInput
                 label="Label"
                 value={label}
-                onChange={(e) => setLabel(e.target.value)}
+                onChange={(e) => save({ newLabel: e.target.value })}
             />
             <TextInput
                 label="Value"
                 value={value}
-                onChange={(e) => setValue(e.target.value)}
+                onChange={(e) => save({ newValue: e.target.value })}
             />
-            <div dangerouslySetInnerHTML={{ __html: preview }} />
         </Container>
     )
 }

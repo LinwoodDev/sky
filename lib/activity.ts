@@ -52,7 +52,7 @@ export const loadActivityFromQuery = async (query: ParsedUrlQuery): Promise<Acti
 }
 
 export const saveActivity = async (activity: Activity) => {
-    await db.activities.add(activity);
+    await db.activities.put(activity);
 }
 export const saveActivityFromRouter = async (router: NextRouter, activity: Activity) => {
     if (router.query.name) {
