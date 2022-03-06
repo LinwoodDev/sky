@@ -1,17 +1,21 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
 import ejs from "ejs";
+import fs from "fs";
 import { join } from "path";
+import { NextApiRequest, NextApiResponse } from "next";
 
-const template = ejs.compile(fs.readFileSync(join(process.cwd(), "templates", "badge", "default.svg"), { encoding: "utf8" }).toString());
-
+export const template = ejs.compile(fs.readFileSync(join(process.cwd(), "templates", "badge", "default.svg"), { encoding: "utf8" }).toString());
+export const fontData = fs.readFileSync(join(process.cwd(), "public", "fonts", "RobotoMono-Regular.ttf"));
+export const fontDataUrl = `data:application/x-font-ttf;base64,${fontData.toString("base64")}`;
 export default function handle(req: NextApiRequest, res: NextApiResponse) {
     const { label, value } = req.query;
     // Trim the label and value
+    res.setHeader("Content-Type", "image/svg+xml");
     const trimmedLabel = label.toString().trim();
     const trimmedValue = value.toString().trim();
 
-    const result = template({ label: trimmedLabel, value: trimmedValue });
-    res.setHeader("Content-Type", "image/svg+xml");
+    const fontName = "Roboto Mono";
+    
+
+    const result = template({ label: trimmedLabel, value: trimmedValue, fontName, fontDataUrl });
     res.status(200).end(result);
 }

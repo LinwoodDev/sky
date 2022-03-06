@@ -1,9 +1,10 @@
-import { Box, Button, Center, Container, Group, Loader, Text, TextInput } from '@mantine/core'
+import { Box, Button, Center, Container, Group, Loader, Text, TextInput, Title } from '@mantine/core'
 import { useNotifications } from '@mantine/notifications';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { useRouter } from 'next/router';
 import React from 'react'
 import { Activity } from '../../lib/activity';
+import { constructBadgeLink } from '../../lib/badge';
 import { db } from '../../lib/db';
 import ActivityShell from '../../src/ActivityShell';
 
@@ -40,8 +41,10 @@ export default function ActivityPage() {
                         <Loader variant="dots" />
                     </Center>
                 }
-                {activity &&
-                    view
+                {activity && <>
+                    <Title sx={{ marginBottom: "1em" }}>Configuration</Title>
+                    {view}
+                </>
                 }
             </Box>
         </ActivityShell>
@@ -58,13 +61,17 @@ export function BadgePage({ activity }: ActivityProps) {
     const [value, setValue] = React.useState('World')
     const notifications = useNotifications();
 
-    const constructLink = (): string => {
-        const labelEncoded = encodeURIComponent(label)
-        const valueEncoded = encodeURIComponent(value)
-        return `/api/badge/${labelEncoded}/${valueEncoded}`
-    }
+    const [preview, setPreview] = React.useState<string>(`<Loader variant="dots" />`);
+
+    React.useEffect(() => {
+        const fetchBadge = async () => {
+            setPreview(await fetch(constructBadgeLink(label, value)).then(res => res.text()));
+        }
+        fetchBadge();
+    }, [label, value]);
+
     const copyLink = () => {
-        const link = window.location.origin + constructLink()
+        const link = window.location.origin + constructBadgeLink(label, value)
         navigator.clipboard.writeText(link)
         notifications.showNotification({
             title: 'Link copied',
@@ -74,40 +81,18 @@ export function BadgePage({ activity }: ActivityProps) {
     }
 
     return (
-        <Container size="lg">
-            <Box
-                sx={{
-                    my: 4,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
-                <Text component="h1">
-                    Configure Badge
-                </Text>
-                <Group direction="column">
-                    <TextInput
-                        label="Label"
-                        value={label}
-                        onChange={(e) => setLabel(e.target.value)}
-                    />
-                    <TextInput
-                        label="Value"
-                        value={value}
-                        onChange={(e) => setValue(e.target.value)}
-                    />
-                </Group>
-                <Container size="md">
-                    <Group direction="column">
-                        <img src={constructLink()} style={{ maxWidth: "100%" }} />
-                        <Button variant="filled" onClick={copyLink}>
-                            Copy to clipboard
-                        </Button>
-                    </Group>
-                </Container>
-            </Box>
+        <Container size="sm">
+            <TextInput
+                label="Label"
+                value={label}
+                onChange={(e) => setLabel(e.target.value)}
+            />
+            <TextInput
+                label="Value"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+            />
+            <div dangerouslySetInnerHTML={{ __html: preview }} />
         </Container>
     )
 }

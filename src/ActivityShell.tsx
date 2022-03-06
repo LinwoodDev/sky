@@ -18,6 +18,9 @@ export default function ActivityShell({ children }: PropsWithChildren<{}>) {
   }, [router.query]);
   const type = activity ? getActivityType(activity.type) : undefined;
   const TypeIcon = type?.icon ?? SunIcon;
+  var query = "";
+  if (router.query.name) query = `?name=${router.query.name}`;
+  else if (router.query.data) query = `?data=${router.query.data}`;
 
   return (
     <AppShell
@@ -46,10 +49,10 @@ export default function ActivityShell({ children }: PropsWithChildren<{}>) {
               <Text>{activity?.name}</Text>
             </Group>
             <Divider sx={{ marginTop: "1em", marginBottom: "1em" }} />
-            <ListButton selected={router.pathname === '/activity'} color="green" icon={<FadersIcon />} label="Configuration" href="/activity" />
-            <ListButton selected={router.pathname === '/activity/style'} color="blue" icon={<PaletteIcon />} label="Styling" href="/activity/styling" />
-            <ListButton selected={router.pathname === '/activity/share'} color="orange" icon={<ShareIcon />} label="Share" href="/activity/share" />
-            <ListButton selected={router.pathname === '/activity/settings'} color="violet" icon={<GearIcon />} label="Settings" href="/activity/settings" />
+            <ListButton selected={router.pathname === '/activity'} color="green" icon={<FadersIcon />} label="Configuration" href={`/activity${query}`} />
+            <ListButton selected={router.pathname === '/activity/style'} color="blue" icon={<PaletteIcon />} label="Styling" href={`/activity/styling${query}`} />
+            <ListButton selected={router.pathname === '/activity/share'} color="orange" icon={<ShareIcon />} label="Share" href={`/activity/share${query}`} />
+            <ListButton selected={router.pathname === '/activity/settings'} color="violet" icon={<GearIcon />} label="Settings" href={`/activity/settings${query}`} />
           </Navbar.Section>
         </ Navbar>
       }
