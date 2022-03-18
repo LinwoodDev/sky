@@ -19,7 +19,7 @@ export default function SkyShell({ children }: PropsWithChildren<{}>) {
       fixed
       navbar={
         <Navbar
-          padding="md"
+          p="md"
           // Breakpoint at which navbar will be hidden if hidden prop is true
           hiddenBreakpoint="sm"
           // Hides navbar when viewport size is less than value specified in hiddenBreakpoint
@@ -38,7 +38,7 @@ export default function SkyShell({ children }: PropsWithChildren<{}>) {
         </Navbar>
       }
       header={
-        <Header height={70} padding="md">
+        <Header height={70} p="md">
           {/* Handle other responsive styles with MediaQuery component or createStyles function */}
           <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
             <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
@@ -52,7 +52,7 @@ export default function SkyShell({ children }: PropsWithChildren<{}>) {
             </MediaQuery>
 
             <Group position="apart" sx={{ flex: 1 }}>
-              <Title order={1}>Linwood Sky</Title>
+              <Title ml={"sm"} order={1}>Linwood Sky</Title>
               <ActionIcon
                 variant="outline"
                 color={dark ? 'yellow' : 'blue'}

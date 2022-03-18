@@ -8,8 +8,8 @@ export const template = ejs.compile(fs.readFileSync(join(process.cwd(), "templat
 export const fontData = fs.readFileSync(join(process.cwd(), "public", "fonts", "RobotoMono-Regular.ttf"));
 export const fontDataUrl = `data:application/x-font-ttf;base64,${fontData.toString("base64")}`;
 
-export default function renderBadge(activity: Activity, req : NextApiRequest, res: NextApiResponse) {
-    const { label, value } = activity.data;
+export default function renderBadge(data: any, req : NextApiRequest, res: NextApiResponse) {
+    const { label, value } = data;
     res.setHeader("Content-Type", "image/svg+xml");
     const trimmedLabel = label.toString().trim();
     const trimmedValue = value.toString().trim();

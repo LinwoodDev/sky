@@ -1,10 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { Activity } from "../../lib/activity";
 import renderBadge from "../../src/renderer/badge";
+import renderCountdown from "../../src/renderer/countdown";
 
 export default function handle(req: NextApiRequest, res: NextApiResponse) {
     const input = req.query.data.toString();
-    if(!input) {
+    if (!input) {
         res.status(400).json({
             error: 'No data'
         });
@@ -15,10 +16,18 @@ export default function handle(req: NextApiRequest, res: NextApiResponse) {
     // Decode the data
     const dataDecoded = dataBuffer.toString('utf8');
     // Parse the data
-    const data = JSON.parse(dataDecoded);
+    const activity = JSON.parse(dataDecoded);
     // Render the data
-    switch(data.type) {
+    switch (activity.type) {
         case 'badge':
-            renderBadge(data, req, res);
+            renderBadge(activity.data, req, res);
+            break;
+        case 'countdown':
+            renderCountdown(activity.data, req, res);
+            break;
+        default:
+            res.status(400).json({
+                error: 'Unknown type'
+            });
     }
 }

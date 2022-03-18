@@ -10,7 +10,7 @@ export default function ActivitySettingsPage({ }: Props) {
             <Box>
                 <Title>Settings</Title>
                 <Center>
-                    <Text>Settings are only available when saving the activity</Text>
+                    <Text>Settings are currently not available</Text>
                 </Center>
             </Box>
         </ActivityShell>

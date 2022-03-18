@@ -65,7 +65,10 @@ export const saveActivityFromRouter = async (router: NextRouter, activity: Activ
 
 export const constructActivityRenderLink = (activity: Activity) : string => {
     // Get activity as base64
-    const data = Buffer.from(JSON.stringify(activity)).toString('base64');
+    const data = Buffer.from(JSON.stringify({
+        type: activity.type,
+        data: activity.data,
+    })).toString('base64');
     // Construct link
     return `/api/render?data=${data}`;
 }
