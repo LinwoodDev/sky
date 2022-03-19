@@ -60,12 +60,7 @@ export default function CreatePage() {
                 </Box>
 
                 <Group position={'right'}>
-                    {name &&
-                        <Button onClick={create}>Create</Button>
-                    }
-                    {!name &&
-                        <Button variant='outline'>Try</Button>
-                    }
+                    <Button onClick={create} disabled={name.length === 0}>Create</Button>
                 </Group>
             </Box>
         </SkyShell>

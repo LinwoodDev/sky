@@ -2,9 +2,8 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications';
-import SkyShell from '../src/Shell';
-import { useState } from 'react';
 import { useHotkeys, useLocalStorageValue } from '@mantine/hooks';
+import { ModalsProvider } from '@mantine/modals';
 
 
 export default function App(props: AppProps) {
@@ -35,9 +34,11 @@ export default function App(props: AppProps) {
           }}
           withNormalizeCSS
         >
-          <NotificationsProvider>
-            <Component {...pageProps} />
-          </NotificationsProvider>
+          <ModalsProvider>
+            <NotificationsProvider>
+              <Component {...pageProps} />
+            </NotificationsProvider>
+          </ModalsProvider>
 
         </MantineProvider>
       </ColorSchemeProvider>
