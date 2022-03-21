@@ -2,9 +2,9 @@ import { Box, Button, Center, Container, Text, TextInput, Title } from '@mantine
 import { useModals } from '@mantine/modals';
 import { useRouter } from 'next/router';
 import React from 'react'
-import { Activity } from '../../lib/activity';
-import { db } from '../../lib/db';
-import ActivityShell from '../../src/ActivityShell'
+import { Activity } from '../../../lib/activity';
+import { db } from '../../../lib/db';
+import ActivityShell from '../../../src/ActivityShell'
 
 
 export default function ActivitySettingsPage() {

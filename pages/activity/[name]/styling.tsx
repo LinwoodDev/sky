@@ -1,6 +1,6 @@
 import { Box, Center, Text, TextInput, Title } from '@mantine/core'
 import React from 'react'
-import ActivityShell from '../../src/ActivityShell'
+import ActivityShell from '../../../src/ActivityShell'
 
 
 export default function ActivityStylingPage() {

@@ -4,10 +4,10 @@ import { DatePicker } from '@mantine/dates';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { useRouter } from 'next/router';
 import React from 'react'
-import { Activity, saveActivityFromRouter } from '../../lib/activity';
-import { constructBadgeLink } from '../../lib/badge';
-import { db } from '../../lib/db';
-import ActivityShell from '../../src/ActivityShell';
+import { Activity, saveActivityFromRouter } from '../../../lib/activity';
+import { constructBadgeLink } from '../../../lib/badge';
+import { db } from '../../../lib/db';
+import ActivityShell from '../../../src/ActivityShell';
 
 
 export default function ActivityPage() {

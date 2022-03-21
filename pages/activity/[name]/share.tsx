@@ -1,11 +1,11 @@
 import { Box, Button, Center, Container, Grid, Group, Image, Space, Text, TextInput, Title } from '@mantine/core'
 import React from 'react'
 import { ActivityProps } from '.';
-import { constructBadgeLink } from '../../lib/badge';
-import ActivityShell from '../../src/ActivityShell'
+import { constructBadgeLink } from '../../../lib/badge';
+import ActivityShell from '../../../src/ActivityShell'
 import { useRouter } from 'next/router';
-import { Activity, constructActivityRenderLink } from '../../lib/activity';
-import { db } from '../../lib/db';
+import { Activity, constructActivityRenderLink } from '../../../lib/activity';
+import { db } from '../../../lib/db';
 import { useNotifications } from '@mantine/notifications';
 import { Check as CheckIcon } from 'phosphor-react';
 

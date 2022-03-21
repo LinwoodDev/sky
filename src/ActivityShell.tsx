@@ -19,8 +19,7 @@ export default function ActivityShell({ children }: PropsWithChildren<{}>) {
   const type = activity ? getActivityType(activity.type) : undefined;
   const TypeIcon = type?.icon ?? SunIcon;
   var query = "";
-  if (router.query.name) query = `?name=${router.query.name}`;
-  else if (router.query.data) query = `?data=${router.query.data}`;
+  if (router.query.name) query = encodeURIComponent(router.query.name.toString());
 
   return (
     <AppShell
@@ -49,10 +48,10 @@ export default function ActivityShell({ children }: PropsWithChildren<{}>) {
               <Text>{activity?.name}</Text>
             </Group>
             <Divider sx={{ marginTop: "1em", marginBottom: "1em" }} />
-            <ListButton selected={router.pathname === '/activity'} color="green" icon={<FadersIcon />} label="Configuration" href={`/activity${query}`} />
-            <ListButton selected={router.pathname === '/activity/styling'} color="blue" icon={<PaletteIcon />} label="Styling" href={`/activity/styling${query}`} />
-            <ListButton selected={router.pathname === '/activity/share'} color="orange" icon={<ShareIcon />} label="Share" href={`/activity/share${query}`} />
-            <ListButton selected={router.pathname === '/activity/settings'} color="violet" icon={<GearIcon />} label="Settings" href={`/activity/settings${query}`} />
+            <ListButton selected={router.asPath === `/activity/${query}`} color="green" icon={<FadersIcon />} label="Configuration" href={`/activity/${query}`} />
+            <ListButton selected={router.asPath === `/activity/${query}/styling`} color="blue" icon={<PaletteIcon />} label="Styling" href={`/activity/${query}/styling`} />
+            <ListButton selected={router.asPath === `/activity/${query}/share`} color="orange" icon={<ShareIcon />} label="Share" href={`/activity/${query}/share`} />
+            <ListButton selected={router.asPath === `/activity/${query}/settings`} color="violet" icon={<GearIcon />} label="Settings" href={`/activity/${query}/settings`} />
           </Navbar.Section>
         </ Navbar>
       }

@@ -60,7 +60,7 @@ const Home: NextPage = () => {
               const type = getActivityType(activity.type);
               const Icon = type?.icon ?? StarIcon;
               return (
-                <ListButton href={`/activity?name=${encodeURIComponent(activity.name)}`} key={activity.name} color={type?.color} label={activity.name} description={
+                <ListButton href={`/activity/${encodeURIComponent(activity.name)}`} key={activity.name} color={type?.color} label={activity.name} description={
                   <>
                     <Text size="sm">{activity.description}</Text>
                     <Group>
